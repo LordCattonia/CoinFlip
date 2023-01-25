@@ -29,9 +29,9 @@ int main() {
         system("CLS");
     }
     if (isCheating) {
-        std::cout<<' ';
-        for (int i=0;i<cheatCount;i++){
-            for (int i=0;i<100;i++){
+        std::cout<<"|  ";
+        for (int i=0;i<cheatCount-1;i++){
+            for (int i=0;i<50;i++){
                 char randomFlip = ' ';
                 if (rand() % 2) {
                     randomFlip = 'H';
@@ -39,16 +39,28 @@ int main() {
                     randomFlip = 'T';
                 }
                 std::cout<<'\b'<<randomFlip;
-                sleep_until(system_clock::now() +  std::chrono::milliseconds(i));
+                sleep_until(system_clock::now() +  std::chrono::milliseconds(i*2));
             }
             std::cout<<'\b'<<cheatInput[i];            
             std::cout<<" |  ";
         }
+        for (int i=0;i<50;i++) {
+            char randomFlip = ' ';
+            if (rand() % 2) {
+                randomFlip = 'H';
+            } else {
+                randomFlip = 'T';
+            }
+            std::cout<<'\b'<<randomFlip;
+            sleep_until(system_clock::now() +  std::chrono::milliseconds(i*2));
+        }
+        std::cout<<'\b'<<cheatInput[cheatCount-1];
+        std::cout<<" |";
     } else {
-        std::cout<<' ';
-        for (int i=0;i<userInput;i++){
-            for (int i=0;i<100;i++){
-                sleep_until(system_clock::now() +  std::chrono::milliseconds(i));
+        std::cout<<"|  ";
+        for (int i=0;i<userInput-1;i++){
+            for (int i=0;i<50;i++){
+                sleep_until(system_clock::now() +  std::chrono::milliseconds(i*2));
                 char randomFlip = ' ';
                 if (rand() % 2) {
                     randomFlip = 'H';
@@ -59,6 +71,17 @@ int main() {
             }
             std::cout<<" |  ";
         }
+        for (int i=0;i<50;i++) {
+            char randomFlip = ' ';
+            if (rand() % 2) {
+                randomFlip = 'H';
+            } else {
+                randomFlip = 'T';
+            }
+            std::cout<<'\b'<<randomFlip;
+            sleep_until(system_clock::now() +  std::chrono::milliseconds(i*2));
+        }
+        std::cout<<" |";
     }
     return 0;
 }
